@@ -81,6 +81,7 @@ grants.forEach((g) => { const key = g.granteeName.trim().toLowerCase(); if (!peo
 // Grantee profile: if ANY of a grantee's grants carries a LinkedIn profile URL, use it for the grantee.
 const linkedinIn = (t) => ((t || "").match(/https?:\/\/(?:[\w-]+\.)?linkedin\.com\/(?:in|pub)\/[^\s,;()"'<>]+/gi) || [])[0] || null;
 people.forEach((p) => { p.li = p.gs.map((g) => linkedinIn(g.link)).find(Boolean) || null; });
+const liCell = (p) => p && p.li ? `<a class="lnk" href="${p.li.replace(/"/g, "%22")}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>` : '<span style="color:var(--muted)">–</span>';
 const liLink = (p) => p.li ? ` <a class="cite" href="${p.li.replace(/"/g, "%22")}" target="_blank" rel="noopener noreferrer" title="LinkedIn profile" aria-label="LinkedIn profile of ${esc(p.name).replace(/"/g, "&quot;")}">[in]</a>` : "";
 people.forEach((p, key) => { p.id = fnv(key); });
 const P = [...people.values()].map((p) => ({ ...p, n: p.gs.length, tot: sum(p.gs.map((g) => g.amountUsd)) }));
@@ -177,8 +178,8 @@ function browse() {
   const sorts = { date: (a, b) => b.ym - a.ym || b.amountUsd - a.amountUsd, "amt-d": (a, b) => b.amountUsd - a.amountUsd, "amt-a": (a, b) => a.amountUsd - b.amountUsd, name: (a, b) => a.granteeName.localeCompare(b.granteeName) };
   r.sort(sorts[st.sort]);
   const pages = Math.max(1, Math.ceil(r.length / PAGE)); st.page = Math.min(st.page, pages - 1);
-  const rows = r.slice(st.page * PAGE, (st.page + 1) * PAGE).map((g) => [g.monthLabel, esc(g.granteeName) + liLink(people.get(g.granteeName.trim().toLowerCase())), `<a class="t" href="#/grant/${g.id}">${esc(g.projectTitle.length > 140 ? g.projectTitle.slice(0, 140) + "…" : g.projectTitle)}</a>`, esc(g.cat), usd(g.amountUsd)]);
-  $("b-res").innerHTML = `<p class="d">${r.length.toLocaleString()} grants · ${usd(sum(r.map((g) => g.amountUsd)))}</p>` + (rows.length ? table(["Month", "Grantee", "Project", "Category", "Amount"], rows, 4) : "<p>No grants match.</p>") +
+  const rows = r.slice(st.page * PAGE, (st.page + 1) * PAGE).map((g) => [g.monthLabel, esc(g.granteeName), liCell(people.get(g.granteeName.trim().toLowerCase())), `<a class="t" href="#/grant/${g.id}">${esc(g.projectTitle.length > 140 ? g.projectTitle.slice(0, 140) + "…" : g.projectTitle)}</a>`, esc(g.cat), usd(g.amountUsd)]);
+  $("b-res").innerHTML = `<p class="d">${r.length.toLocaleString()} grants · ${usd(sum(r.map((g) => g.amountUsd)))}</p>` + (rows.length ? table(["Month", "Grantee", "LinkedIn", "Project", "Category", "Amount"], rows, 5) : "<p>No grants match.</p>") +
     `<div class="pager"><button id="pg-p" ${st.page === 0 ? "disabled" : ""}>← Prev</button><span>Page ${st.page + 1} of ${pages}</span><button id="pg-n" ${st.page >= pages - 1 ? "disabled" : ""}>Next →</button></div>`;
   $("pg-p").onclick = () => { st.page--; browse(); window.scrollTo(0, 0); };
   $("pg-n").onclick = () => { st.page++; browse(); window.scrollTo(0, 0); };
@@ -216,8 +217,8 @@ function grantees() {
   const sorts = { total: (a, b) => b.tot - a.tot, n: (a, b) => b.n - a.n || b.tot - a.tot, recent: (a, b) => b.last - a.last || b.tot - a.tot, name: (a, b) => a.name.localeCompare(b.name) };
   const r = peopleArr.filter((p) => (!gs.rep || p.n > 1) && (!ql || p.name.toLowerCase().includes(ql))).sort(sorts[gs.sort]);
   const pages = Math.max(1, Math.ceil(r.length / PAGE)); gs.page = Math.min(gs.page, pages - 1);
-  const rows = r.slice(gs.page * PAGE, (gs.page + 1) * PAGE).map((p) => [`<a class="t" href="#/grantee/${p.id}">${esc(p.name)}</a>${liLink(p)}`, p.n, usd(p.tot), usd(p.tot / p.n), ymLabel(p.last)]);
-  $("g-res").innerHTML = `<p class="d">${r.length.toLocaleString()} grantees</p>` + (rows.length ? table(["Grantee", "Grants", "Total", "Avg", "Latest"], rows) : "<p>No grantees match.</p>") +
+  const rows = r.slice(gs.page * PAGE, (gs.page + 1) * PAGE).map((p) => [`<a class="t" href="#/grantee/${p.id}">${esc(p.name)}</a>`, liCell(p), p.n, usd(p.tot), usd(p.tot / p.n), ymLabel(p.last)]);
+  $("g-res").innerHTML = `<p class="d">${r.length.toLocaleString()} grantees</p>` + (rows.length ? table(["Grantee", "LinkedIn", "Grants", "Total", "Avg", "Latest"], rows, 2) : "<p>No grantees match.</p>") +
     `<div class="pager"><button id="gp-p" ${gs.page === 0 ? "disabled" : ""}>← Prev</button><span>Page ${gs.page + 1} of ${pages}</span><button id="gp-n" ${gs.page >= pages - 1 ? "disabled" : ""}>Next →</button></div>`;
   $("gp-p").onclick = () => { gs.page--; grantees(); window.scrollTo(0, 0); };
   $("gp-n").onclick = () => { gs.page++; grantees(); window.scrollTo(0, 0); };
