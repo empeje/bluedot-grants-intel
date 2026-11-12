@@ -78,6 +78,10 @@ mk("a2", () => ({ type: "bar", data: { labels: byCatN.map((x) => x.c), datasets:
 // (b) repeats
 const people = new Map();
 grants.forEach((g) => { const key = g.granteeName.trim().toLowerCase(); if (!people.has(key)) people.set(key, { name: g.granteeName.trim(), gs: [] }); people.get(key).gs.push(g); });
+// Grantee profile: if ANY of a grantee's grants carries a LinkedIn profile URL, use it for the grantee.
+const linkedinIn = (t) => ((t || "").match(/https?:\/\/(?:[\w-]+\.)?linkedin\.com\/(?:in|pub)\/[^\s,;()"'<>]+/gi) || [])[0] || null;
+people.forEach((p) => { p.li = p.gs.map((g) => linkedinIn(g.link)).find(Boolean) || null; });
+const liLink = (p) => p.li ? ` <a class="cite" href="${p.li.replace(/"/g, "%22")}" target="_blank" rel="noopener noreferrer" title="LinkedIn profile" aria-label="LinkedIn profile of ${esc(p.name).replace(/"/g, "&quot;")}">[in]</a>` : "";
 const P = [...people.values()].map((p) => ({ ...p, n: p.gs.length, tot: sum(p.gs.map((g) => g.amountUsd)) }));
 const rep = P.filter((p) => p.n > 1);
 const repGrants = sum(rep.map((p) => p.n)), repTot = sum(rep.map((p) => p.tot));
@@ -89,8 +93,8 @@ const topFreq = [...P].sort((a, b) => b.n - a.n || b.tot - a.tot).slice(0, 8);
 const topAmt = [...P].sort((a, b) => b.tot - a.tot).slice(0, 8);
 // Citations [n] link to our own grant detail page (original title, summary, BlueDot link).
 const cites = (p) => " " + [...p.gs].sort((a, b) => b.ym - a.ym || b.amountUsd - a.amountUsd).map((g, j) => `<a class="cite" href="#/grant/${g.id}" title="${esc(g.projectTitle.slice(0, 140)).replace(/"/g, "&quot;")} (${usd(g.amountUsd)}, ${g.monthLabel})">[${j + 1}]</a>`).join("");
-const nameCell = (p) => esc(p.name) + cites(p);
-$("b-table").innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div><b style="font-size:13px">Most grants</b>${table(["Grantee", "#", "Total"], topFreq.map((p) => [nameCell(p), p.n, usd(p.tot)]))}</div><div><b style="font-size:13px">Most dollars</b>${table(["Grantee", "#", "Total"], topAmt.map((p) => [nameCell(p), p.n, usd(p.tot)]))}</div></div><p class="d" style="margin:10px 0 0">[n] = one grant of that grantee, newest first; opens its detail page (hover for the title).</p>`;
+const nameCell = (p) => esc(p.name) + liLink(p) + cites(p);
+$("b-table").innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div><b style="font-size:13px">Most grants</b>${table(["Grantee", "#", "Total"], topFreq.map((p) => [nameCell(p), p.n, usd(p.tot)]))}</div><div><b style="font-size:13px">Most dollars</b>${table(["Grantee", "#", "Total"], topAmt.map((p) => [nameCell(p), p.n, usd(p.tot)]))}</div></div><p class="d" style="margin:10px 0 0">[n] = one grant of that grantee, newest first; opens its detail page (hover for the title). [in] = LinkedIn profile, taken from any of the grantee's grants that lists one.</p>`;
 
 // (c) size
 const bins = [[0, 100], [100, 250], [250, 500], [500, 1000], [1000, 2000], [2000, 3000], [3000, 5000], [5000, 10000], [10000, 1e9]];
@@ -172,7 +176,7 @@ function browse() {
   const sorts = { date: (a, b) => b.ym - a.ym || b.amountUsd - a.amountUsd, "amt-d": (a, b) => b.amountUsd - a.amountUsd, "amt-a": (a, b) => a.amountUsd - b.amountUsd, name: (a, b) => a.granteeName.localeCompare(b.granteeName) };
   r.sort(sorts[st.sort]);
   const pages = Math.max(1, Math.ceil(r.length / PAGE)); st.page = Math.min(st.page, pages - 1);
-  const rows = r.slice(st.page * PAGE, (st.page + 1) * PAGE).map((g) => [g.monthLabel, esc(g.granteeName), `<a class="t" href="#/grant/${g.id}">${esc(g.projectTitle.length > 140 ? g.projectTitle.slice(0, 140) + "…" : g.projectTitle)}</a>`, esc(g.cat), usd(g.amountUsd)]);
+  const rows = r.slice(st.page * PAGE, (st.page + 1) * PAGE).map((g) => [g.monthLabel, esc(g.granteeName) + liLink(people.get(g.granteeName.trim().toLowerCase())), `<a class="t" href="#/grant/${g.id}">${esc(g.projectTitle.length > 140 ? g.projectTitle.slice(0, 140) + "…" : g.projectTitle)}</a>`, esc(g.cat), usd(g.amountUsd)]);
   $("b-res").innerHTML = `<p class="d">${r.length.toLocaleString()} grants · ${usd(sum(r.map((g) => g.amountUsd)))}</p>` + (rows.length ? table(["Month", "Grantee", "Project", "Category", "Amount"], rows, 4) : "<p>No grants match.</p>") +
     `<div class="pager"><button id="pg-p" ${st.page === 0 ? "disabled" : ""}>← Prev</button><span>Page ${st.page + 1} of ${pages}</span><button id="pg-n" ${st.page >= pages - 1 ? "disabled" : ""}>Next →</button></div>`;
   $("pg-p").onclick = () => { st.page--; browse(); window.scrollTo(0, 0); };
@@ -191,7 +195,7 @@ function detail(id) {
   const links = urls(g.link);
   $("view-detail").innerHTML = `<section class="card detail"><a class="lnk" href="javascript:history.length>1?history.back():(location.hash='#/grants')">← Back</a>
 <div class="q" style="margin-top:12px">Rapid grant · ${esc(g.monthLabel)}</div><h2>${esc(g.projectTitle)}</h2>
-<dl><dt>Grantee</dt><dd>${esc(g.granteeName)}</dd><dt>Amount</dt><dd><b>${usd(g.amountUsd)}</b></dd><dt>Month</dt><dd>${esc(g.monthLabel)}</dd><dt>Category</dt><dd>${esc(g.cat)} <span style="color:var(--muted)">(inferred)</span></dd>
+<dl><dt>Grantee</dt><dd>${esc(g.granteeName)}${p.li ? ` · <a class="lnk" href="${attr(p.li)}" target="_blank" rel="noopener noreferrer">LinkedIn profile ↗</a>` : ""}</dd><dt>Amount</dt><dd><b>${usd(g.amountUsd)}</b></dd><dt>Month</dt><dd>${esc(g.monthLabel)}</dd><dt>Category</dt><dd>${esc(g.cat)} <span style="color:var(--muted)">(inferred)</span></dd>
 <dt>Link</dt><dd>${links.length ? links.map((u) => `<a class="lnk" href="${attr(u)}" target="_blank" rel="noopener noreferrer">${esc(u)}</a>`).join("<br>") : g.link ? esc(g.link) : '<span style="color:var(--muted)">none listed</span>'}</dd></dl>
 ${g.projectSummary ? `<div class="q">Summary</div><div class="sum">${esc(g.projectSummary)}</div>` : ""}
 ${others.length ? `<div class="q" style="margin-top:18px">Other grants to this grantee (${others.length})</div>${table(["Month", "Project", "Amount"], others.map((x) => [x.monthLabel, `<a class="t" href="#/grant/${x.id}">${esc(x.projectTitle.length > 120 ? x.projectTitle.slice(0, 120) + "…" : x.projectTitle)}</a>`, usd(x.amountUsd)]), 2)}` : ""}
