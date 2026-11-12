@@ -82,6 +82,7 @@ grants.forEach((g) => { const key = g.granteeName.trim().toLowerCase(); if (!peo
 const linkedinIn = (t) => ((t || "").match(/https?:\/\/(?:[\w-]+\.)?linkedin\.com\/(?:in|pub)\/[^\s,;()"'<>]+/gi) || [])[0] || null;
 people.forEach((p) => { p.li = p.gs.map((g) => linkedinIn(g.link)).find(Boolean) || null; });
 const liLink = (p) => p.li ? ` <a class="cite" href="${p.li.replace(/"/g, "%22")}" target="_blank" rel="noopener noreferrer" title="LinkedIn profile" aria-label="LinkedIn profile of ${esc(p.name).replace(/"/g, "&quot;")}">[in]</a>` : "";
+people.forEach((p, key) => { p.id = fnv(key); });
 const P = [...people.values()].map((p) => ({ ...p, n: p.gs.length, tot: sum(p.gs.map((g) => g.amountUsd)) }));
 const rep = P.filter((p) => p.n > 1);
 const repGrants = sum(rep.map((p) => p.n)), repTot = sum(rep.map((p) => p.tot));
@@ -195,21 +196,56 @@ function detail(id) {
   const links = urls(g.link);
   $("view-detail").innerHTML = `<section class="card detail"><a class="lnk" href="javascript:history.length>1?history.back():(location.hash='#/grants')">← Back</a>
 <div class="q" style="margin-top:12px">Rapid grant · ${esc(g.monthLabel)}</div><h2>${esc(g.projectTitle)}</h2>
-<dl><dt>Grantee</dt><dd>${esc(g.granteeName)}${p.li ? ` · <a class="lnk" href="${attr(p.li)}" target="_blank" rel="noopener noreferrer">LinkedIn profile ↗</a>` : ""}</dd><dt>Amount</dt><dd><b>${usd(g.amountUsd)}</b></dd><dt>Month</dt><dd>${esc(g.monthLabel)}</dd><dt>Category</dt><dd>${esc(g.cat)} <span style="color:var(--muted)">(inferred)</span></dd>
+<dl><dt>Grantee</dt><dd><a class="lnk" href="#/grantee/${p.id}">${esc(g.granteeName)}</a>${p.li ? ` · <a class="lnk" href="${attr(p.li)}" target="_blank" rel="noopener noreferrer">LinkedIn profile ↗</a>` : ""}</dd><dt>Amount</dt><dd><b>${usd(g.amountUsd)}</b></dd><dt>Month</dt><dd>${esc(g.monthLabel)}</dd><dt>Category</dt><dd>${esc(g.cat)} <span style="color:var(--muted)">(inferred)</span></dd>
 <dt>Link</dt><dd>${links.length ? links.map((u) => `<a class="lnk" href="${attr(u)}" target="_blank" rel="noopener noreferrer">${esc(u)}</a>`).join("<br>") : g.link ? esc(g.link) : '<span style="color:var(--muted)">none listed</span>'}</dd></dl>
 ${g.projectSummary ? `<div class="q">Summary</div><div class="sum">${esc(g.projectSummary)}</div>` : ""}
 ${others.length ? `<div class="q" style="margin-top:18px">Other grants to this grantee (${others.length})</div>${table(["Month", "Project", "Amount"], others.map((x) => [x.monthLabel, `<a class="t" href="#/grant/${x.id}">${esc(x.projectTitle.length > 120 ? x.projectTitle.slice(0, 120) + "…" : x.projectTitle)}</a>`, usd(x.amountUsd)]), 2)}` : ""}
 <p class="d" style="margin-top:14px">Source: <a class="lnk" href="https://bluedot.org/grants/rapid" target="_blank" rel="noopener noreferrer">bluedot.org/grants/rapid</a></p></section>`;
 }
 
+
+// ---------- grantees list + grantee page ----------
+const gs = { q: "", sort: "total", rep: false, page: 0 };
+const peopleArr = [...people.values()].map((p) => ({ ...p, n: p.gs.length, tot: sum(p.gs.map((g) => g.amountUsd)), last: Math.max(...p.gs.map((g) => g.ym)) }));
+$("view-grantees").innerHTML = `<section class="card"><h2>Grantees</h2><p class="d">${peopleArr.length.toLocaleString()} unique names (matched by exact name). Click a name to see all their grants.</p>
+<div class="ctrls"><input id="g-q" type="search" placeholder="Search grantee name…" aria-label="Search grantees">
+<select id="g-sort" aria-label="Sort"><option value="total">Total $: high → low</option><option value="n">Most grants</option><option value="recent">Most recent</option><option value="name">Name A–Z</option></select>
+<label style="display:flex;align-items:center;gap:6px;color:var(--ink2);font-size:14px"><input id="g-rep" type="checkbox"> Repeat grantees only</label></div><div id="g-res"></div></section>`;
+function grantees() {
+  const ql = gs.q.trim().toLowerCase();
+  const sorts = { total: (a, b) => b.tot - a.tot, n: (a, b) => b.n - a.n || b.tot - a.tot, recent: (a, b) => b.last - a.last || b.tot - a.tot, name: (a, b) => a.name.localeCompare(b.name) };
+  const r = peopleArr.filter((p) => (!gs.rep || p.n > 1) && (!ql || p.name.toLowerCase().includes(ql))).sort(sorts[gs.sort]);
+  const pages = Math.max(1, Math.ceil(r.length / PAGE)); gs.page = Math.min(gs.page, pages - 1);
+  const rows = r.slice(gs.page * PAGE, (gs.page + 1) * PAGE).map((p) => [`<a class="t" href="#/grantee/${p.id}">${esc(p.name)}</a>${liLink(p)}`, p.n, usd(p.tot), usd(p.tot / p.n), ymLabel(p.last)]);
+  $("g-res").innerHTML = `<p class="d">${r.length.toLocaleString()} grantees</p>` + (rows.length ? table(["Grantee", "Grants", "Total", "Avg", "Latest"], rows) : "<p>No grantees match.</p>") +
+    `<div class="pager"><button id="gp-p" ${gs.page === 0 ? "disabled" : ""}>← Prev</button><span>Page ${gs.page + 1} of ${pages}</span><button id="gp-n" ${gs.page >= pages - 1 ? "disabled" : ""}>Next →</button></div>`;
+  $("gp-p").onclick = () => { gs.page--; grantees(); window.scrollTo(0, 0); };
+  $("gp-n").onclick = () => { gs.page++; grantees(); window.scrollTo(0, 0); };
+}
+$("g-q").oninput = (e) => { gs.q = e.target.value; gs.page = 0; grantees(); };
+$("g-sort").onchange = (e) => { gs.sort = e.target.value; gs.page = 0; grantees(); };
+$("g-rep").onchange = (e) => { gs.rep = e.target.checked; gs.page = 0; grantees(); };
+
+function granteePage(id) {
+  const p = peopleArr.find((x) => x.id === id);
+  if (!p) { $("view-detail").innerHTML = `<section class="card detail"><h2>Grantee not found</h2><a class="lnk" href="#/grantees">← Grantees</a></section>`; return; }
+  const list = [...p.gs].sort((a, b) => b.ym - a.ym || b.amountUsd - a.amountUsd);
+  $("view-detail").innerHTML = `<section class="card detail"><a class="lnk" href="#/grantees">← Grantees</a>
+<div class="q" style="margin-top:12px">Grantee</div><h2>${esc(p.name)}</h2>
+<dl><dt>Grants</dt><dd>${p.n}</dd><dt>Total</dt><dd><b>${usd(p.tot)}</b> (avg ${usd(p.tot / p.n)})</dd><dt>Active</dt><dd>${ymLabel(Math.min(...p.gs.map((g) => g.ym)))} – ${ymLabel(p.last)}</dd>
+<dt>LinkedIn</dt><dd>${p.li ? `<a class="lnk" href="${attr(p.li)}" target="_blank" rel="noopener noreferrer">${esc(p.li)}</a>` : '<span style="color:var(--muted)">none listed</span>'}</dd></dl>
+${table(["Month", "Project", "Category", "Amount"], list.map((x) => [x.monthLabel, `<a class="t" href="#/grant/${x.id}">${esc(x.projectTitle.length > 140 ? x.projectTitle.slice(0, 140) + "…" : x.projectTitle)}</a>`, esc(x.cat), usd(x.amountUsd)]), 3)}</section>`;
+}
+
 function route() {
   const hash = location.hash || "#/";
-  const m = hash.match(/^#\/grant\/([\w-]+)/);
-  const view = m ? "detail" : hash.startsWith("#/grants") ? "browse" : "dash";
-  ["dash", "browse", "detail"].forEach((v) => ($("view-" + v).hidden = v !== view));
+  const m = hash.match(/^#\/grant\/([\w-]+)/), gm = hash.match(/^#\/grantee\/([\w-]+)/);
+  const view = m || gm ? "detail" : hash.startsWith("#/grantees") ? "grantees" : hash.startsWith("#/grants") ? "browse" : "dash";
+  ["dash", "browse", "grantees", "detail"].forEach((v) => ($("view-" + v).hidden = v !== view));
   $("nav-dash").classList.toggle("on", view === "dash");
-  $("nav-browse").classList.toggle("on", view !== "dash");
-  if (view === "dash") render(); else if (view === "browse") browse(); else detail(m[1]);
+  $("nav-browse").classList.toggle("on", view === "browse" || !!m);
+  $("nav-grantees").classList.toggle("on", view === "grantees" || !!gm);
+  if (view === "dash") render(); else if (view === "browse") browse(); else if (view === "grantees") grantees(); else if (gm) granteePage(gm[1]); else detail(m[1]);
   if (!(view === "dash" && st.keepScroll)) window.scrollTo(0, 0);
 }
 addEventListener("hashchange", route);

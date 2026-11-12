@@ -30,7 +30,7 @@ th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
 th{color:var(--ink2);font-weight:600}td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 a.cite{color:var(--c1);text-decoration:none;font-size:12px;white-space:nowrap}a.cite:hover{text-decoration:underline}.cite.none{color:var(--muted);font-size:12px}
 nav.nav{display:flex;gap:6px;margin:0 0 20px}nav.nav a{padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink2);text-decoration:none;font-size:14px;background:var(--surface)}nav.nav a.on{color:var(--ink);border-color:var(--c1);box-shadow:inset 0 0 0 1px var(--c1)}
-.ctrls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.ctrls input,.ctrls select{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}.ctrls input{flex:1 1 240px}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.ctrls input,.ctrls select{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}.ctrls input[type=search]{flex:1 1 240px}.ctrls input[type=checkbox]{width:auto;padding:0}
 .pager{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:12px;color:var(--ink2);font-size:13.5px}.pager button{font:inherit;padding:5px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);cursor:pointer}.pager button:disabled{opacity:.4;cursor:default}
 td a.t,a.lnk{color:var(--c1);text-decoration:none}td a.t:hover,a.lnk:hover{text-decoration:underline}
 .detail h2{font-size:22px;line-height:1.3;margin:6px 0 14px}.detail dl{display:grid;grid-template-columns:130px 1fr;gap:8px 14px;margin:0 0 16px}.detail dt{color:var(--ink2)}.detail dd{margin:0;overflow-wrap:anywhere}.detail .sum{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
@@ -46,7 +46,7 @@ details{margin-top:10px;font-size:13px;color:var(--ink2)}summary{cursor:pointer}
 <main>
 <h1>BlueDot Grants Explorer</h1>
 <p class="sub">Public funding data from <a href="https://bluedot.org/grants/rapid" style="color:var(--c1)">bluedot.org/grants</a>. <span id="fetched"></span></p>
-<nav class="nav"><a href="#/" id="nav-dash">Dashboard</a><a href="#/grants" id="nav-browse">Browse grants</a></nav>
+<nav class="nav"><a href="#/" id="nav-dash">Dashboard</a><a href="#/grants" id="nav-browse">Browse grants</a><a href="#/grantees" id="nav-grantees">Grantees</a></nav>
 <div id="view-dash">
 <div class="note" id="coverage"></div>
 <div class="tiles" id="tiles"></div>
@@ -72,6 +72,7 @@ details{margin-top:10px;font-size:13px;color:var(--ink2)}summary{cursor:pointer}
 </div>
 </div>
 <div id="view-browse" hidden></div>
+<div id="view-grantees" hidden></div>
 <div id="view-detail" hidden></div>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
