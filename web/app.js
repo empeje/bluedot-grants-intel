@@ -23,6 +23,12 @@ grants.forEach((g) => {
   g.cat = (RULES.find((r) => r[1].test(g.projectTitle)) || RULES.find((r) => r[1].test(t)) || [DEFAULT_CAT])[0];
 });
 
+// Stable ids (hash of content) so detail links survive data refreshes.
+const fnv = (str) => { let x = 0x811c9dc5; for (let i = 0; i < str.length; i++) { x ^= str.charCodeAt(i); x = Math.imul(x, 0x01000193) >>> 0; } return x.toString(36); };
+const idSeen = {};
+grants.forEach((g) => { let id = fnv([g.granteeName, g.projectTitle, g.monthLabel, g.amountUsd].join("|")); idSeen[id] = (idSeen[id] || 0) + 1; g.id = idSeen[id] > 1 ? id + "-" + idSeen[id] : id; });
+const byId = new Map(grants.map((g) => [g.id, g]));
+
 // ---------- dates ----------
 const MON = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11 };
 grants.forEach((g) => { const [m, y] = g.monthLabel.split(" "); g.ym = +y * 12 + MON[m]; });
@@ -81,11 +87,10 @@ $("b-desc").innerHTML = `<b>Yes.</b> ${P.length.toLocaleString()} unique names r
 mk("b1", () => ({ type: "bar", data: { labels: Object.keys(hist).map((n) => n + (n == 1 ? " grant" : " grants")), datasets: [{ label: "Grantees", data: Object.values(hist), backgroundColor: css("--c1"), borderRadius: 4, maxBarThickness: 48 }] }, options: base() }));
 const topFreq = [...P].sort((a, b) => b.n - a.n || b.tot - a.tot).slice(0, 8);
 const topAmt = [...P].sort((a, b) => b.tot - a.tot).slice(0, 8);
-// Citations: [1][2]… link to each grant's own link on bluedot.org (hover shows the project title + amount).
-const safeUrl = (u) => { const m = (u || "").match(/https?:\/\/[^\s,;()]+/i); return m ? m[0].replace(/"/g, "%22") : null; }; // some fields hold several URLs: take the first
-const cites = (p) => { const seen = new Set(), ls = []; p.gs.forEach((g) => { const u = safeUrl(g.link); if (u && !seen.has(u)) { seen.add(u); ls.push({ u, g }); } }); return ls.length ? " " + ls.map(({ u, g }, j) => `<a class="cite" href="${u}" target="_blank" rel="noopener noreferrer" title="${esc(g.projectTitle.slice(0, 140)).replace(/"/g, "&quot;")} (${usd(g.amountUsd)}, ${g.monthLabel})">[${j + 1}]</a>`).join("") : ' <span class="cite none" title="No link listed for this grantee">[–]</span>'; };
+// Citations [n] link to our own grant detail page (original title, summary, BlueDot link).
+const cites = (p) => " " + [...p.gs].sort((a, b) => b.ym - a.ym || b.amountUsd - a.amountUsd).map((g, j) => `<a class="cite" href="#/grant/${g.id}" title="${esc(g.projectTitle.slice(0, 140)).replace(/"/g, "&quot;")} (${usd(g.amountUsd)}, ${g.monthLabel})">[${j + 1}]</a>`).join("");
 const nameCell = (p) => esc(p.name) + cites(p);
-$("b-table").innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div><b style="font-size:13px">Most grants</b>${table(["Grantee", "#", "Total"], topFreq.map((p) => [nameCell(p), p.n, usd(p.tot)]))}</div><div><b style="font-size:13px">Most dollars</b>${table(["Grantee", "#", "Total"], topAmt.map((p) => [nameCell(p), p.n, usd(p.tot)]))}</div></div><p class="d" style="margin:10px 0 0">[n] = link to that grant's project/profile as listed by BlueDot (hover for the project). [–] = no link listed.</p>`;
+$("b-table").innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div><b style="font-size:13px">Most grants</b>${table(["Grantee", "#", "Total"], topFreq.map((p) => [nameCell(p), p.n, usd(p.tot)]))}</div><div><b style="font-size:13px">Most dollars</b>${table(["Grantee", "#", "Total"], topAmt.map((p) => [nameCell(p), p.n, usd(p.tot)]))}</div></div><p class="d" style="margin:10px 0 0">[n] = one grant of that grantee, newest first; opens its detail page (hover for the title).</p>`;
 
 // (c) size
 const bins = [[0, 100], [100, 250], [250, 500], [500, 1000], [1000, 2000], [2000, 3000], [3000, 5000], [5000, 10000], [10000, 1e9]];
@@ -148,6 +153,62 @@ $("intel").innerHTML = intel.map((t) => `<li>${t}</li>`).join("");
 
 // ---------- render ----------
 function render() { charts.forEach((c) => { c.inst && c.inst.destroy(); c.inst = new Chart($(c.id), c.cfgFn()); }); }
-render();
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+
+// ---------- browse + detail views ----------
+const urls = (t) => (t || "").match(/https?:\/\/[^\s,;()]+/gi) || [];
+const attr = (t) => esc(t).replace(/"/g, "&quot;");
+const st = { q: "", cat: "", month: "", sort: "date", page: 0 };
+const PAGE = 50;
+const monthOpts = [...new Set(grants.map((g) => g.ym))].sort((a, b) => b - a);
+$("view-browse").innerHTML = `<section class="card"><h2>Browse grants</h2><p class="d">Every public rapid grant. Click a title for the full detail.</p>
+<div class="ctrls"><input id="f-q" type="search" placeholder="Search grantee, title or summary…" aria-label="Search">
+<select id="f-cat" aria-label="Category"><option value="">All categories</option>${CATS.map((c) => `<option>${esc(c)}</option>`).join("")}</select>
+<select id="f-month" aria-label="Month"><option value="">All months</option>${monthOpts.map((m) => `<option value="${m}">${ymLabel(m)}</option>`).join("")}</select>
+<select id="f-sort" aria-label="Sort"><option value="date">Newest first</option><option value="amt-d">Amount: high → low</option><option value="amt-a">Amount: low → high</option><option value="name">Grantee A–Z</option></select></div>
+<div id="b-res"></div></section>`;
+function browse() {
+  const ql = st.q.trim().toLowerCase();
+  let r = grants.filter((g) => (!st.cat || g.cat === st.cat) && (!st.month || g.ym === +st.month) && (!ql || (g.granteeName + " " + g.projectTitle + " " + (g.projectSummary || "")).toLowerCase().includes(ql)));
+  const sorts = { date: (a, b) => b.ym - a.ym || b.amountUsd - a.amountUsd, "amt-d": (a, b) => b.amountUsd - a.amountUsd, "amt-a": (a, b) => a.amountUsd - b.amountUsd, name: (a, b) => a.granteeName.localeCompare(b.granteeName) };
+  r.sort(sorts[st.sort]);
+  const pages = Math.max(1, Math.ceil(r.length / PAGE)); st.page = Math.min(st.page, pages - 1);
+  const rows = r.slice(st.page * PAGE, (st.page + 1) * PAGE).map((g) => [g.monthLabel, esc(g.granteeName), `<a class="t" href="#/grant/${g.id}">${esc(g.projectTitle.length > 140 ? g.projectTitle.slice(0, 140) + "…" : g.projectTitle)}</a>`, esc(g.cat), usd(g.amountUsd)]);
+  $("b-res").innerHTML = `<p class="d">${r.length.toLocaleString()} grants · ${usd(sum(r.map((g) => g.amountUsd)))}</p>` + (rows.length ? table(["Month", "Grantee", "Project", "Category", "Amount"], rows, 4) : "<p>No grants match.</p>") +
+    `<div class="pager"><button id="pg-p" ${st.page === 0 ? "disabled" : ""}>← Prev</button><span>Page ${st.page + 1} of ${pages}</span><button id="pg-n" ${st.page >= pages - 1 ? "disabled" : ""}>Next →</button></div>`;
+  $("pg-p").onclick = () => { st.page--; browse(); window.scrollTo(0, 0); };
+  $("pg-n").onclick = () => { st.page++; browse(); window.scrollTo(0, 0); };
+}
+$("f-q").oninput = (e) => { st.q = e.target.value; st.page = 0; browse(); };
+$("f-cat").onchange = (e) => { st.cat = e.target.value; st.page = 0; browse(); };
+$("f-month").onchange = (e) => { st.month = e.target.value; st.page = 0; browse(); };
+$("f-sort").onchange = (e) => { st.sort = e.target.value; st.page = 0; browse(); };
+
+function detail(id) {
+  const g = byId.get(id);
+  if (!g) { $("view-detail").innerHTML = `<section class="card detail"><h2>Grant not found</h2><p class="d">It may have been removed in a data refresh.</p><a class="lnk" href="#/grants">← Browse grants</a></section>`; return; }
+  const p = people.get(g.granteeName.trim().toLowerCase());
+  const others = p.gs.filter((x) => x.id !== g.id).sort((a, b) => b.ym - a.ym);
+  const links = urls(g.link);
+  $("view-detail").innerHTML = `<section class="card detail"><a class="lnk" href="javascript:history.length>1?history.back():(location.hash='#/grants')">← Back</a>
+<div class="q" style="margin-top:12px">Rapid grant · ${esc(g.monthLabel)}</div><h2>${esc(g.projectTitle)}</h2>
+<dl><dt>Grantee</dt><dd>${esc(g.granteeName)}</dd><dt>Amount</dt><dd><b>${usd(g.amountUsd)}</b></dd><dt>Month</dt><dd>${esc(g.monthLabel)}</dd><dt>Category</dt><dd>${esc(g.cat)} <span style="color:var(--muted)">(inferred)</span></dd>
+<dt>Link</dt><dd>${links.length ? links.map((u) => `<a class="lnk" href="${attr(u)}" target="_blank" rel="noopener noreferrer">${esc(u)}</a>`).join("<br>") : g.link ? esc(g.link) : '<span style="color:var(--muted)">none listed</span>'}</dd></dl>
+${g.projectSummary ? `<div class="q">Summary</div><div class="sum">${esc(g.projectSummary)}</div>` : ""}
+${others.length ? `<div class="q" style="margin-top:18px">Other grants to this grantee (${others.length})</div>${table(["Month", "Project", "Amount"], others.map((x) => [x.monthLabel, `<a class="t" href="#/grant/${x.id}">${esc(x.projectTitle.length > 120 ? x.projectTitle.slice(0, 120) + "…" : x.projectTitle)}</a>`, usd(x.amountUsd)]), 2)}` : ""}
+<p class="d" style="margin-top:14px">Source: <a class="lnk" href="https://bluedot.org/grants/rapid" target="_blank" rel="noopener noreferrer">bluedot.org/grants/rapid</a></p></section>`;
+}
+
+function route() {
+  const hash = location.hash || "#/";
+  const m = hash.match(/^#\/grant\/([\w-]+)/);
+  const view = m ? "detail" : hash.startsWith("#/grants") ? "browse" : "dash";
+  ["dash", "browse", "detail"].forEach((v) => ($("view-" + v).hidden = v !== view));
+  $("nav-dash").classList.toggle("on", view === "dash");
+  $("nav-browse").classList.toggle("on", view !== "dash");
+  if (view === "dash") render(); else if (view === "browse") browse(); else detail(m[1]);
+  if (!(view === "dash" && st.keepScroll)) window.scrollTo(0, 0);
+}
+addEventListener("hashchange", route);
+route();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (!$("view-dash").hidden) render(); });
 })();
