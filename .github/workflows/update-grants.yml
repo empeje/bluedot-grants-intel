@@ -1,0 +1,51 @@
+name: Update grants data
+on:
+  schedule:
+    - cron: "17 3 * * *" # daily, 03:17 UTC
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: update-grants
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Archive previous snapshot
+        run: |
+          mkdir -p data/archive
+          f="data/archive/grants-$(date +%F).json"
+          [ -f "$f" ] || cp data/grants.json "$f"
+      - name: Fetch grants
+        run: node scripts/fetch-grants.mjs
+      - name: Commit and push if changed
+        id: commit
+        run: |
+          # Archive alone isn't a change worth committing: only commit if the data changed.
+          if git diff --quiet -- data/grants.json web/data.js; then
+            echo "No data changes."
+            git checkout -- . 2>/dev/null || true
+            git clean -fdq data/archive
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data web/data.js
+          git commit -m "Update grants data $(date +%F)"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      # Pushes made with GITHUB_TOKEN don't trigger other workflows, so deploy explicitly.
+      - name: Deploy Pages
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
