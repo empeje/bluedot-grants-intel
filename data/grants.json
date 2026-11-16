@@ -1,14 +1,59 @@
 {
-  "fetchedAt": "2026-11-12T20:02:15.223Z",
+  "fetchedAt": "2026-11-16T19:11:38.972Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
       "grants": [
         {
+          "granteeName": "Camilla Balbis",
+          "projectTitle": "Dinner: 16 executives learn about catastrophic AI risk with BlueDot facilitator, discuss and leave with a concrete next step, starting with BlueDot's AGI Strategy course.",
+          "amountUsd": 2400,
+          "link": "https://www.linkedin.com/in/camillabalbis/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Andrés Camilo Casas Sánchez",
+          "projectTitle": "Organizing an AI Safety Talk at my university",
+          "amountUsd": 485,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Chang Shiau Huei",
+          "projectTitle": "Travel, accommodation and compute to teach a hands-on AI security session to 50 top cybersecurity students from 10 countries at Global Cybersecurity Camp (GCC) 2027",
+          "amountUsd": 850,
+          "link": "https://www.plzentertext.com/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Blake Brown",
+          "projectTitle": "Travel to Boston Biosecurity Hackathon",
+          "amountUsd": 500,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Christian Copetti, Andrea Ferrari",
+          "projectTitle": "The founding of the HEP4SAFETY initiative, aimed at building a community of high-energy and mathematical physicists who want to tackle big problems in AI Safety",
+          "amountUsd": 6000,
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Ilham Nugraha",
           "projectTitle": "Support for the first in-person AI Safety roundtable with social meetups and 1-on-1 meetings on AI misuse in Jakarta, Indonesia",
           "amountUsd": 1150,
           "link": "https://roundtable.masyarakat.ai/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Sam Ogden",
+          "projectTitle": "Travel and Accommodation for EAGx Berlin",
+          "amountUsd": 350,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jennifer Baik",
+          "projectTitle": "SF AI Safety Career Fair & Founders Summit 2.0",
+          "amountUsd": 5708.01,
+          "link": "https://luma.com/ais-career-fair",
           "monthLabel": "Nov 2026"
         },
         {
@@ -25,9 +70,35 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Osmani Redondo",
+          "projectTitle": "First in person Women4AIS networking event that will take place in Spain (Madrid, 24 November 2026), presented by BlueDot Impact with the support of Codemotion España, at the Celonis offices.",
+          "amountUsd": 2000,
+          "link": "https://www.linkedin.com/company/women4aisafety",
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Adrien Amouroux",
           "projectTitle": "Travel to the Bay Area to meet and connect with AI safety people",
           "amountUsd": 900,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Vanessa Huang",
+          "projectTitle": "AI Safety Networking Night #2 @ Sydney NeurIPS",
+          "amountUsd": 2400,
+          "link": "https://luma.com/4443lvnw",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Junyi Liu",
+          "projectTitle": "I’m requesting Runpod credits to evaluate different steering strategies for making models more honest under pressure while preserving their reasoning ability (the NeurIPS Steerability Challenge)",
+          "amountUsd": 200,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Rucha Agashe",
+          "projectTitle": "Can workspace (Jacobian) lenses recover an answer a model deliberately withholds",
+          "amountUsd": 500,
           "monthLabel": "Nov 2026"
         },
         {
@@ -79,6 +150,12 @@
           "granteeName": "Artyom Lisitsyn",
           "projectTitle": "The funding is to pay for the flights and accommodations to attend and present about AI Safety at the California AI Amplitudes workshop, an event for theoretical physicists.",
           "amountUsd": 600,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Peter-James H. Zushin",
+          "projectTitle": "A laptop for local-model pretesting in my red-teaming study of AI co-scientists’ mechanistic drug-design hazards, culminating in an arXiv preprint and NeurIPS 2027 submission.",
+          "amountUsd": 3300,
           "monthLabel": "Nov 2026"
         },
         {
@@ -289,6 +366,12 @@
           "granteeName": "Joel Jinkinson",
           "projectTitle": "Compute budget for mentored research on why emergent misalignment occurs in the RL / reward hack setting.",
           "amountUsd": 7750,
+          "monthLabel": "Oct 2026"
+        },
+        {
+          "granteeName": "Nok Man, Chan",
+          "projectTitle": "Present initial work on bootstrapping efforts to advance science of auditors and monitors in NeurIPS and finding collaborators",
+          "amountUsd": 3500,
           "monthLabel": "Oct 2026"
         },
         {
@@ -6159,9 +6242,9 @@
         }
       ],
       "stats": {
-        "count": 1280,
-        "totalAmountUsd": 4064608.5300000003,
-        "averageDaysToDecision": 5.034810533076389
+        "count": 1293,
+        "totalAmountUsd": 4103319.54,
+        "averageDaysToDecision": 5.027656980288522
       }
     },
     "career-transition": {
@@ -6223,25 +6306,11 @@
           "profileUrl": "https://www.linkedin.com/in/robin-hueber/"
         },
         {
-          "granteeName": "William Wheeler",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recuQVKNrL01lo05G/1",
-          "bio": "Emmy-winning journalist, author and documentary filmmaker for HBO and Netflix.",
-          "grantPlan": "Reporting on AI safety and biosecurity across podcast, video and print.",
-          "profileUrl": "https://www.linkedin.com/in/william-wheeler-12028228/"
-        },
-        {
           "granteeName": "Jay Kimmel",
           "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recNI6qDOg3ZnmRYx/1",
           "bio": "Former diplomat focused on China and emerging technology. Johns Hopkins SAIS.",
           "grantPlan": "Researching and publishing on US-China cooperation on AI safety.",
           "profileUrl": "https://www.linkedin.com/in/jaymkimmel/"
-        },
-        {
-          "granteeName": "Divya Agarwal",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recFLXlcnA3e1yv87/1",
-          "bio": "AI researcher with a Stanford background, working across AI safety and healthcare.",
-          "grantPlan": "Researching persistent data-poisoning attacks on AI models.",
-          "profileUrl": "https://www.linkedin.com/in/divyaagarwal93/"
         },
         {
           "granteeName": "David Bravo Comas",
@@ -6286,13 +6355,6 @@
           "profileUrl": "https://www.linkedin.com/in/caitlin-mah/"
         },
         {
-          "granteeName": "Ettore Arpini",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recNdCayZ60XxlXH1/1",
-          "bio": "Former director of strategy and impact at WRI Brasil.",
-          "grantPlan": "Moving into AI governance, building public AI engagement in the Global South.",
-          "profileUrl": "https://linkedin.com/in/arpini"
-        },
-        {
           "granteeName": "Laurence Wroe",
           "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/reci6K4U2pBO6LVYw/1",
           "bio": "Accelerator physicist and former CERN senior fellow. Oxford PhD in particle physics.",
@@ -6300,39 +6362,11 @@
           "profileUrl": "https://www.laurencewroe.com/"
         },
         {
-          "granteeName": "Jeremy Crocker",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/rec5y79rprq9pojH6/1",
-          "bio": "Former geopolitical risk intelligence analyst at RANE.",
-          "grantPlan": "Co-founding a startup screening for AI-designed dangerous DNA sequences.",
-          "profileUrl": "https://www.linkedin.com/in/jeremy-crocker/"
-        },
-        {
-          "granteeName": "Harrison Wood",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recv5R3EI9twq6tqd/1",
-          "bio": "Video creator behind the BlueDot Stories podcast and graduate case-study films.",
-          "grantPlan": "Pursuing independent AI safety content creation.",
-          "profileUrl": "https://www.linkedin.com/in/harrison-wood-film/"
-        },
-        {
-          "granteeName": "Benjamin Alt",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recOapWr0v4xXiJrq/1",
-          "bio": "Former Technical Director at the AICOR Institute for Artificial Intelligence.",
-          "grantPlan": "Founding an organisation focused on physical AI safety.",
-          "profileUrl": "https://www.linkedin.com/in/benjamin-alt"
-        },
-        {
           "granteeName": "David Zeidler",
           "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/rec0rw2HvHRP2M5pd/1",
           "bio": "Mathematician with an MSc from Dalhousie University.",
           "grantPlan": "Pursuing mathematical AI safety research full-time.",
           "profileUrl": "https://www.linkedin.com/in/david-zeidler"
-        },
-        {
-          "granteeName": "Fernando Borretti Leon",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recVJmwwevUfERqrv/1",
-          "bio": "Software engineer and essayist. Creator of the Austral programming language.",
-          "grantPlan": "Writing full-time on AI risk, in essays and fiction.",
-          "profileUrl": "https://borretti.me/about/"
         },
         {
           "granteeName": "Gabriel Levie",
@@ -6440,13 +6474,6 @@
           "profileUrl": "https://patrickcannon.cc/"
         },
         {
-          "granteeName": "Stuart Wilmot",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recFY0LlImF8OKPFx/1",
-          "bio": "Freelance filmmaker for Diageo, LinkedIn, PwC, and Sony. 8 years.",
-          "grantPlan": "Creating films on AI risk for general audiences.",
-          "profileUrl": "https://www.linkedin.com/in/stuart-wilmot/"
-        },
-        {
           "granteeName": "Allegra Cohen",
           "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/rec1NvDiGlCUxvHVR/1",
           "bio": "Program Director at the AI Objectives Institute. Former DARPA programme lead.",
@@ -6489,32 +6516,11 @@
           "profileUrl": "https://www.linkedin.com/in/aj-weeks"
         },
         {
-          "granteeName": "Benjamin Hodgkiss",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recAE24Qx9DQSw958/1",
-          "bio": "Startup COO and former product manager at Second Nature and EY.",
-          "grantPlan": "Building an organisation to verify AI hardware for international compute governance.",
-          "profileUrl": "https://www.linkedin.com/in/benjamin-hodgkiss/"
-        },
-        {
-          "granteeName": "Caitlin Yardley",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recRgo6rTpgh0j00Y/1",
-          "bio": "Journalist and former AFP digital producer. Creator of FutureBriefing.",
-          "grantPlan": "Making AI safety content for audiences the field doesn't reach, and building the creator community.",
-          "profileUrl": "https://www.linkedin.com/in/caitlinyardley/"
-        },
-        {
           "granteeName": "Guido Bergman",
           "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/rec8eI26OLI7ua8z0/1",
           "bio": "Full-stack engineer at TDI. NeurIPS and ICLR workshop co-author.",
           "grantPlan": "Pursuing technical AI safety research full-time.",
           "profileUrl": "https://www.linkedin.com/in/guido-ernesto-bergman-2251bb203/"
-        },
-        {
-          "granteeName": "Jay Brasier-Creagh",
-          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/rec1T9PW6oUDmMWHT/1",
-          "bio": "Filmmaker for Adidas, Dr Martens, Coach. 9+ years",
-          "grantPlan": "Pivoted from commercial filmmaking to make AI safety content, and bring creators together.",
-          "profileUrl": "https://www.linkedin.com/in/jay-brasier-creagh-b930a597/"
         },
         {
           "granteeName": "Kirill Myagkov",
@@ -6525,8 +6531,8 @@
         }
       ],
       "stats": {
-        "count": 104,
-        "totalAmountUsd": 6248415,
+        "count": 83,
+        "totalAmountUsd": 5252665,
         "averageDaysToDecision": 13
       }
     }
