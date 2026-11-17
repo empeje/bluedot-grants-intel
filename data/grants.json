@@ -1,9 +1,35 @@
 {
-  "fetchedAt": "2026-11-16T19:11:38.972Z",
+  "fetchedAt": "2026-11-17T11:50:52.044Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
       "grants": [
+        {
+          "granteeName": "Tim Farrelly",
+          "projectTitle": "Buffer funding for AI Global Initiative's pilot event",
+          "amountUsd": 5000,
+          "link": "https://www.aiglobalinitiative.org/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Tom Latkowski",
+          "projectTitle": "Flights and incidentals to attend the AI Horizons Forum in SF in December (hotel is already covered by the conference itself)",
+          "amountUsd": 1150,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jord Nguyen",
+          "projectTitle": "Travel support to the Bay Area to attend conferences",
+          "amountUsd": 2800,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Chengheng Li",
+          "projectTitle": "Funding for Safe AI Lausanne operations (MATS AI Safety Series Talks)",
+          "amountUsd": 1340,
+          "link": "https://lausanne.aisafety.ch/",
+          "monthLabel": "Nov 2026"
+        },
         {
           "granteeName": "Camilla Balbis",
           "projectTitle": "Dinner: 16 executives learn about catastrophic AI risk with BlueDot facilitator, discuss and leave with a concrete next step, starting with BlueDot's AGI Strategy course.",
@@ -50,6 +76,13 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Naomi Couriel",
+          "projectTitle": "A professional-quality, long-form YouTube video explaining AI safety in Spanish, in the style of 80,000 Hours’ AI in Context, building on my channel @naointech (1.2M+ views in its first month).",
+          "amountUsd": 8000,
+          "link": "https://www.instagram.com/naointech/",
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Jennifer Baik",
           "projectTitle": "SF AI Safety Career Fair & Founders Summit 2.0",
           "amountUsd": 5708.01,
@@ -67,6 +100,13 @@
           "granteeName": "Evan Harris",
           "projectTitle": "I'm the founder of the AI Strategy Group at Emory, and am requesting funding to pay for printouts, food, and advertising materials for our group.",
           "amountUsd": 800,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jonathan Hind",
+          "projectTitle": "A 3-month project to get Lab Canary’s standard for AI lab staff contracts reviewed by UK and US lawyers, so candidates and advocates can press labs to protect staff who raise safety concerns.",
+          "amountUsd": 8850,
+          "link": "https://labcanary.com/",
           "monthLabel": "Nov 2026"
         },
         {
@@ -238,6 +278,12 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Marnick Vandecauter",
+          "projectTitle": "We're measuring cheap AI control monitors for detecting backdoors and looking to extend our current work to evaluate a safety-vs-usefulness trade-off and an adaptive attacker.",
+          "amountUsd": 200,
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Edoardo Cecchinato",
           "projectTitle": "The first event for starting a local group in Trento (Italy), as part of the larger community of AI Safety for Italy.",
           "amountUsd": 580,
@@ -280,6 +326,13 @@
           "granteeName": "Jason Fantl",
           "projectTitle": "Registration, flights, and hotel for NeurIPS 2026 in Atlanta (Dec 9-13), where I was invited to a metascience workshop, to get feedback on Averroes Labs and find collaborators.",
           "amountUsd": 2750,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Phoebe Lim",
+          "projectTitle": "I want to extend my Neuron Lens project to larger models and base models to learn how scaling affects neuron interpretability, and whether training can be interpreted directly.",
+          "amountUsd": 4200,
+          "link": "https://neuron-lens.com/",
           "monthLabel": "Nov 2026"
         },
         {
@@ -6242,9 +6295,9 @@
         }
       ],
       "stats": {
-        "count": 1293,
-        "totalAmountUsd": 4103319.54,
-        "averageDaysToDecision": 5.027656980288522
+        "count": 1304,
+        "totalAmountUsd": 4141309.54,
+        "averageDaysToDecision": 5.036660653437524
       }
     },
     "career-transition": {
