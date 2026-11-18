@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-17T11:50:52.044Z",
+  "fetchedAt": "2026-11-18T11:40:23.577Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
@@ -73,6 +73,13 @@
           "granteeName": "Sam Ogden",
           "projectTitle": "Travel and Accommodation for EAGx Berlin",
           "amountUsd": 350,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Rohan Barad",
+          "projectTitle": "Keeping LIaiSE’s momentum going through January, so experienced generalists keep finding, learning and moving into AI safety.",
+          "amountUsd": 7000,
+          "link": "https://www.liaiseai.xyz/",
           "monthLabel": "Nov 2026"
         },
         {
@@ -255,6 +262,12 @@
           "granteeName": "Aidan Doherty",
           "projectTitle": "AV equipment rental for a community event to teach and organize about AI risk",
           "amountUsd": 700,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Noga Aharony",
+          "projectTitle": "A home workstation for my full-time remote work founding MAGENTA, an independent safety evaluator for biological AI models.",
+          "amountUsd": 2400,
           "monthLabel": "Nov 2026"
         },
         {
@@ -6295,13 +6308,27 @@
         }
       ],
       "stats": {
-        "count": 1304,
-        "totalAmountUsd": 4141309.54,
-        "averageDaysToDecision": 5.036660653437524
+        "count": 1307,
+        "totalAmountUsd": 4151209.54,
+        "averageDaysToDecision": 5.034477254588949
       }
     },
     "career-transition": {
       "grantees": [
+        {
+          "granteeName": "Logan Kane",
+          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recG0YIZES8yHBKP7/1",
+          "bio": "Consultant at Oliver Wyman working on AI strategy. Member of Harvard's AI Safety Student Team.",
+          "grantPlan": "Exploring founding, generalist and residency paths into AI safety.",
+          "profileUrl": "https://www.linkedin.com/in/logan-kane-510/"
+        },
+        {
+          "granteeName": "Sebastian Hönig",
+          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recTwrNApcljQmevL/1",
+          "bio": "Software engineer at Bloomberg. MSc in computer science from ETH Zürich.",
+          "grantPlan": "Pursuing technical AI safety research full-time, starting with interpretability work through SPAR.",
+          "profileUrl": "https://www.linkedin.com/in/sebastian-hoenig/"
+        },
         {
           "granteeName": "Kirsten Horton",
           "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/reciYMLrRbW62P73S/1",
@@ -6584,8 +6611,8 @@
         }
       ],
       "stats": {
-        "count": 83,
-        "totalAmountUsd": 5252665,
+        "count": 84,
+        "totalAmountUsd": 5292665,
         "averageDaysToDecision": 13
       }
     }
