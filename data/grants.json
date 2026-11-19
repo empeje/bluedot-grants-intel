@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-18T11:40:23.577Z",
+  "fetchedAt": "2026-11-19T11:38:37.519Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
@@ -51,6 +51,20 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Ernesto Bernardo",
+          "projectTitle": "20000",
+          "amountUsd": 2000,
+          "link": "https://hack.platan.us/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Alex Eftimiades",
+          "projectTitle": "Compute to test whether rewarding a model for correctly reporting an impossible task, alongside the task reward, stops reinforcement learning from teaching it to exploit a buggy grader and hide it.",
+          "amountUsd": 2500,
+          "link": "https://github.com/aeftimia/rewardhack",
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Blake Brown",
           "projectTitle": "Travel to Boston Biosecurity Hackathon",
           "amountUsd": 500,
@@ -67,6 +81,13 @@
           "projectTitle": "Support for the first in-person AI Safety roundtable with social meetups and 1-on-1 meetings on AI misuse in Jakarta, Indonesia",
           "amountUsd": 1150,
           "link": "https://roundtable.masyarakat.ai/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jollen Dai",
+          "projectTitle": "Three months of part-time research time and API credits to test whether the AI summaries that safety monitors read also hide collusion that agents come up with on their own, and to release a test.",
+          "amountUsd": 4000,
+          "link": "https://github.com/jxdai2007/summarizer-monitor",
           "monthLabel": "Nov 2026"
         },
         {
@@ -188,6 +209,12 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Emily Kelt",
+          "projectTitle": "Paper about Defences against Abliteration in VLMs",
+          "amountUsd": 1300,
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Genevieve Shea",
           "projectTitle": "Travel support to attend AI Horizons Forum",
           "amountUsd": 480,
@@ -223,6 +250,13 @@
           "projectTitle": "Drinks and snacks for our next Safe&Ethical AI Vienna meetup",
           "amountUsd": 150,
           "link": "https://luma.com/user/safe_ai_vienna",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Osmani Redondo",
+          "projectTitle": "We are seeking to fund essential software tools that our teams needs to keep our work organized, broadcast our seminars across different platforms and improve the follow-up system we have for atendees",
+          "amountUsd": 300,
+          "link": "https://aisafety.es/",
           "monthLabel": "Nov 2026"
         },
         {
@@ -6308,9 +6342,9 @@
         }
       ],
       "stats": {
-        "count": 1307,
-        "totalAmountUsd": 4151209.54,
-        "averageDaysToDecision": 5.034477254588949
+        "count": 1313,
+        "totalAmountUsd": 4132189.54,
+        "averageDaysToDecision": 5.04903979410014
       }
     },
     "career-transition": {
