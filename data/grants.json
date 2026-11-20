@@ -1,9 +1,21 @@
 {
-  "fetchedAt": "2026-11-19T11:38:37.519Z",
+  "fetchedAt": "2026-11-20T11:38:18.606Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
       "grants": [
+        {
+          "granteeName": "Pim Spelier",
+          "projectTitle": "Compute for two projects on AI Safety research for next 6-8 weeks",
+          "amountUsd": 5000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Alfred Williamson",
+          "projectTitle": "Hybrid Internship at the Office of the UK Minister for AI (Kanishka Narayan)",
+          "amountUsd": 2450,
+          "monthLabel": "Nov 2026"
+        },
         {
           "granteeName": "Tim Farrelly",
           "projectTitle": "Buffer funding for AI Global Initiative's pilot event",
@@ -15,6 +27,51 @@
           "granteeName": "Tom Latkowski",
           "projectTitle": "Flights and incidentals to attend the AI Horizons Forum in SF in December (hotel is already covered by the conference itself)",
           "amountUsd": 1150,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Catherine Ge-Wang",
+          "projectTitle": "Support, travel and living costs for my transition period starting an automated auditing org with existing CG funding",
+          "amountUsd": 20000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jaray Foo",
+          "projectTitle": "Compute and API credits to test how models fine-tuned away from identifying as an AI behave, what sort of persona they adopt and whether this causes shifts in behaviors and preferences.",
+          "amountUsd": 3000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Bobby Faber",
+          "projectTitle": "Persona Geology: bringing the blog post to paper-level science",
+          "amountUsd": 5000,
+          "link": "https://huggingface.co/bubskee/persona-geology-adapters",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Francesca Gomez",
+          "projectTitle": "API credits to run a new evaluation testing whether AI agents will disclose a stolen API key rather than use this to access information they need for their task (org building)",
+          "amountUsd": 1400,
+          "link": "https://blog.wiserhuman.ai/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jasmine Lever",
+          "projectTitle": "Short film about AI safety",
+          "amountUsd": 400,
+          "link": "https://creativesforsafeai.org/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Hemasai Suhas Kurapati",
+          "projectTitle": "Travel support to Berkeley, CA to explore AI safety roles",
+          "amountUsd": 1050,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Andrew Jin",
+          "projectTitle": "Honesty audit and predictions for model fine-tuning.",
+          "amountUsd": 150,
           "monthLabel": "Nov 2026"
         },
         {
@@ -31,10 +88,22 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "David Africa",
+          "projectTitle": "Compute for side channels and hardware awareness research",
+          "amountUsd": 19000,
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Camilla Balbis",
           "projectTitle": "Dinner: 16 executives learn about catastrophic AI risk with BlueDot facilitator, discuss and leave with a concrete next step, starting with BlueDot's AGI Strategy course.",
           "amountUsd": 2400,
           "link": "https://www.linkedin.com/in/camillabalbis/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Kyle Lucchese",
+          "projectTitle": "Three weeks in the Bay Area in January 2027, working from Mox, Constellation and FAR, to decide whether to move there full-time for AI safety work/founding.",
+          "amountUsd": 7550,
           "monthLabel": "Nov 2026"
         },
         {
@@ -142,6 +211,12 @@
           "projectTitle": "First in person Women4AIS networking event that will take place in Spain (Madrid, 24 November 2026), presented by BlueDot Impact with the support of Codemotion España, at the Celonis offices.",
           "amountUsd": 2000,
           "link": "https://www.linkedin.com/company/women4aisafety",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jacob Woessner",
+          "projectTitle": "Funds for supporting an AI Advocacy group at the University of Vermont.",
+          "amountUsd": 1300,
           "monthLabel": "Nov 2026"
         },
         {
@@ -260,6 +335,12 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Serena Booth",
+          "projectTitle": "We've been studying how to prevent hacking (e.g., OpenAI Hugging Face attack) through improved reward function design; we're looking for funding for open router credits to evaluate our approach.",
+          "amountUsd": 8000,
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Samuel Knoche",
           "projectTitle": "Extending LoReFT GRAFT work preventing RL reward hacking, and extending it to work on arbitrary settings using internal probes.",
           "amountUsd": 12000,
@@ -328,6 +409,13 @@
           "granteeName": "Marnick Vandecauter",
           "projectTitle": "We're measuring cheap AI control monitors for detecting backdoors and looking to extend our current work to evaluate a safety-vs-usefulness trade-off and an adaptive attacker.",
           "amountUsd": 200,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Hunar Batra",
+          "projectTitle": "Travel Funding to present my first-author NeurIPS 2026 Main Track Paper “Multimodal Model Diffing for Feature Discovery and Control”",
+          "amountUsd": 3950,
+          "link": "https://hunarbatra.com/MMDiff/",
           "monthLabel": "Nov 2026"
         },
         {
@@ -6342,9 +6430,9 @@
         }
       ],
       "stats": {
-        "count": 1313,
-        "totalAmountUsd": 4132189.54,
-        "averageDaysToDecision": 5.04903979410014
+        "count": 1330,
+        "totalAmountUsd": 4217339.540000001,
+        "averageDaysToDecision": 5.064380617428644
       }
     },
     "career-transition": {
@@ -6647,7 +6735,7 @@
       "stats": {
         "count": 84,
         "totalAmountUsd": 5292665,
-        "averageDaysToDecision": 13
+        "averageDaysToDecision": 12
       }
     }
   }
