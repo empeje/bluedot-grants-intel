@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-20T11:38:18.606Z",
+  "fetchedAt": "2026-11-21T10:59:36.541Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
@@ -30,9 +30,23 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Nathan Langley",
+          "projectTitle": "To conduct my Bluedot Technical AI Safety project preliminary results on determining if coder models reduce or increase confidence in their answers after being corrected.",
+          "amountUsd": 50,
+          "link": "https://nathanlangley.dev/",
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Catherine Ge-Wang",
           "projectTitle": "Support, travel and living costs for my transition period starting an automated auditing org with existing CG funding",
           "amountUsd": 20000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Moeen Razzaque",
+          "projectTitle": "A low-cost bench prototype that measures AI compute through a GPU's liquid cooling loop and records signed, tamper-evident logs, to test whether cooling-based verification can help compute governance.",
+          "amountUsd": 6400,
+          "link": "https://www.burooj.tech/",
           "monthLabel": "Nov 2026"
         },
         {
@@ -6430,9 +6444,9 @@
         }
       ],
       "stats": {
-        "count": 1330,
-        "totalAmountUsd": 4217339.540000001,
-        "averageDaysToDecision": 5.064380617428644
+        "count": 1333,
+        "totalAmountUsd": 4224689.540000001,
+        "averageDaysToDecision": 5.060178536774658
       }
     },
     "career-transition": {
@@ -6735,7 +6749,7 @@
       "stats": {
         "count": 84,
         "totalAmountUsd": 5292665,
-        "averageDaysToDecision": 12
+        "averageDaysToDecision": 13
       }
     }
   }
