@@ -1,9 +1,22 @@
 {
-  "fetchedAt": "2026-11-21T10:59:36.541Z",
+  "fetchedAt": "2026-11-22T09:27:57.246Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
       "grants": [
+        {
+          "granteeName": "Jennifer Baik",
+          "projectTitle": "Part 2 of AIS Career Fair & Founders Summit: 4 meals for 2 days",
+          "amountUsd": 8655.8,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Raphael Khalid",
+          "projectTitle": "Testing whether white-box monitors catch eval gaming on safety research, in an extension of Redwood’s AI control setup.",
+          "amountUsd": 1000,
+          "link": "https://andarcontrol.org/",
+          "monthLabel": "Nov 2026"
+        },
         {
           "granteeName": "Pim Spelier",
           "projectTitle": "Compute for two projects on AI Safety research for next 6-8 weeks",
@@ -11,9 +24,98 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Hunter Jay",
+          "projectTitle": "API costs to continue running a daily AI safety digest (news.integuide.com)",
+          "amountUsd": 6000,
+          "link": "https://news.integuide.com/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jason Lu",
+          "projectTitle": "AI subscriptions to assist with coding/research for a scalable oversight project.",
+          "amountUsd": 1700,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Leo Qin",
+          "projectTitle": "Funding for the GPT-4o judge and cloud GPU time needed to test, on Qwen2.5-14B, whether emergent misalignment models and generally misaligned models share internal directions for misaligned behaviour.",
+          "amountUsd": 500,
+          "link": "https://www.leoqin.com/projects/em-evil-persona/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Arathi Arivayutham",
+          "projectTitle": "I’m requesting funding for GPU compute, storage and limited API use to test whether activation probes and persona directions can detect when a monitor model knowingly approves backdoored code.",
+          "amountUsd": 250,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Isahan Khan",
+          "projectTitle": "Cloud GPU and API credits to study what happens inside an AI agent while another AI pressures it into breaking a rule for AI Safety Project Sprint.",
+          "amountUsd": 100,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Victor Amaral",
+          "projectTitle": "API and compute costs to build an open-source Inspect eval that tests whether AI research agents honestly report disappointing experimental results.",
+          "amountUsd": 1000,
+          "link": "https://vja.studio/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jess Bergs",
+          "projectTitle": "Travel to CHI 2027 in Pittsburgh",
+          "amountUsd": 2700,
+          "link": "https://www.jbergs.eu/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Louis Sloot",
+          "projectTitle": "Compute for technical AIS research.",
+          "amountUsd": 2000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Suraj Ranganath",
+          "projectTitle": "Compute to turn SwarmPot, my env for testing whether defender agents swarms can use honeypots to deceive attacker agent swarms, into a full research study that others in the community can build on.",
+          "amountUsd": 500,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Alex Gorbachev",
+          "projectTitle": "API credits to test a port of the CoTControl benchmark to Inspect AI using models with accessible reasoning traces",
+          "amountUsd": 50,
+          "link": "https://github.com/Alg2338/cot-control-inspect",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Joe Murray",
+          "projectTitle": "Just over two months of salary to secure pilot funding and plan for Simulator's Tokyo hub – the first in a network of AI safety hubs – and scope other cities.",
+          "amountUsd": 20000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Zach Yahn",
+          "projectTitle": "Compute budget for research into decomposition attacks",
+          "amountUsd": 2000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Clara Kummerer",
+          "projectTitle": "Career Transition to identify new, actionable projects relating to AI-enabled concentration of power, and avoiding human-AI conflict.",
+          "amountUsd": 20000,
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Alfred Williamson",
           "projectTitle": "Hybrid Internship at the Office of the UK Minister for AI (Kanishka Narayan)",
           "amountUsd": 2450,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Edmund Bu",
+          "projectTitle": "Travel to Coevolution Conference",
+          "amountUsd": 500,
           "monthLabel": "Nov 2026"
         },
         {
@@ -40,6 +142,20 @@
           "granteeName": "Catherine Ge-Wang",
           "projectTitle": "Support, travel and living costs for my transition period starting an automated auditing org with existing CG funding",
           "amountUsd": 20000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Rouven Jahnke",
+          "projectTitle": "6 months of Claude Ultra for my work on emergent misalignment as a student research assistant at the Lamarr Institute; students there have no access to frontier models.",
+          "amountUsd": 1450,
+          "link": "https://www.rouvenjahnke.com/research/emergent-misalignment",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Chisom Chibuike",
+          "projectTitle": "I am requesting for a $600 funding to pay for API credits and GPU costs for my research experiment on \"Belief to Goal transfer as a Mechanism of Misalignment in AI Agents\".",
+          "amountUsd": 600,
+          "link": "https://chisomchibuike.substack.com/p/organisms-of-misalignment",
           "monthLabel": "Nov 2026"
         },
         {
@@ -444,6 +560,13 @@
           "projectTitle": "Travel and registration to present our paper on the normalization of deviance in AI development at the Trustworthy AI for Good workshop, at NeurIPS 2026 (Paris, 12 Dec).",
           "amountUsd": 1200,
           "link": "https://arxiv.org/abs/2609.05749",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Jordan Olmstead",
+          "projectTitle": "An interactive research report landscaping opportunities for insurance companies to mitigate catastrophic AI risks with AI forecasting.",
+          "amountUsd": 15000,
+          "link": "https://quotient.social/",
           "monthLabel": "Nov 2026"
         },
         {
@@ -6444,9 +6567,9 @@
         }
       ],
       "stats": {
-        "count": 1333,
-        "totalAmountUsd": 4224689.540000001,
-        "averageDaysToDecision": 5.060178536774658
+        "count": 1354,
+        "totalAmountUsd": 4317005.34,
+        "averageDaysToDecision": 5.026170332769285
       }
     },
     "career-transition": {
