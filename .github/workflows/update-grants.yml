@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-  actions: write
 concurrency:
   group: update-grants
   cancel-in-progress: false
@@ -43,9 +42,3 @@ jobs:
           git commit -m "Update grants data $(date +%F)"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      # Pushes made with GITHUB_TOKEN don't trigger other workflows, so deploy explicitly.
-      - name: Deploy Pages
-        if: steps.commit.outputs.changed == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run pages.yml --ref main
