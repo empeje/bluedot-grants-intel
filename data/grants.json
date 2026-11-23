@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-22T11:22:49.035Z",
+  "fetchedAt": "2026-11-23T12:36:47.647Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
@@ -28,6 +28,12 @@
           "projectTitle": "API costs to continue running a daily AI safety digest (news.integuide.com)",
           "amountUsd": 6000,
           "link": "https://news.integuide.com/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Melinda Wang",
+          "projectTitle": "Flights and incidentals to attend the December AI Horizons Forum in SF.",
+          "amountUsd": 1100,
           "monthLabel": "Nov 2026"
         },
         {
@@ -104,12 +110,6 @@
           "granteeName": "Clara Kummerer",
           "projectTitle": "Career Transition to identify new, actionable projects relating to AI-enabled concentration of power, and avoiding human-AI conflict.",
           "amountUsd": 20000,
-          "monthLabel": "Nov 2026"
-        },
-        {
-          "granteeName": "Alfred Williamson",
-          "projectTitle": "Hybrid Internship at the Office of the UK Minister for AI (Kanishka Narayan)",
-          "amountUsd": 2450,
           "monthLabel": "Nov 2026"
         },
         {
@@ -193,6 +193,13 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Houston Claure",
+          "projectTitle": "To pilot a nonpartisan network connecting U.S. Senate offices with academic AI experts who provide ongoing technical guidance and rapid-response consultations on frontier AI safety and governance.",
+          "amountUsd": 7000,
+          "link": "https://www.houstonclaure.com/",
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Hemasai Suhas Kurapati",
           "projectTitle": "Travel support to Berkeley, CA to explore AI safety roles",
           "amountUsd": 1050,
@@ -254,6 +261,13 @@
           "projectTitle": "20000",
           "amountUsd": 2000,
           "link": "https://hack.platan.us/",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Evan Harris",
+          "projectTitle": "Sector travel.",
+          "amountUsd": 1500,
+          "link": "https://github.com/opensource-security/sift",
           "monthLabel": "Nov 2026"
         },
         {
@@ -6567,9 +6581,9 @@
         }
       ],
       "stats": {
-        "count": 1354,
-        "totalAmountUsd": 4317005.34,
-        "averageDaysToDecision": 5.026170332769285
+        "count": 1359,
+        "totalAmountUsd": 4329755.34,
+        "averageDaysToDecision": 5.025943307677832
       }
     },
     "career-transition": {
@@ -6803,7 +6817,7 @@
           "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recruoiBmWQTORZHU/1",
           "bio": "Harvard Frank Knox Fellow with a background in medicine, law, and health policy.",
           "grantPlan": "Moving into full-time AI governance research on evaluation reliability and field strategy.",
-          "profileUrl": "https://davidgringrascv.tiiny.site/"
+          "profileUrl": "https://davidgringras.com/"
         },
         {
           "granteeName": "Patrick Cannon",
