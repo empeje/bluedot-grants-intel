@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-23T12:36:47.647Z",
+  "fetchedAt": "2026-11-24T13:41:16.342Z",
   "source": "https://bluedot.org/api/trpc",
   "types": {
     "rapid": {
@@ -37,9 +37,30 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Emma Krentz, Tom Taylor, Emma Rafkin",
+          "projectTitle": "Compute to continue experiments on decodability of LLM-generated languages",
+          "amountUsd": 4350,
+          "link": "https://www.lesswrong.com/posts/7eJF9p8rnaAAcKbZa/swarmish-what-happens-when-agent-swarms-create-language",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Tymon Sosnowski",
+          "projectTitle": "We will allocate the funds to rent a venue for organizing Poland's first AI Safety Hackathon.",
+          "amountUsd": 1500,
+          "link": "https://ho-ho-hack.vercel.app/",
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Jason Lu",
           "projectTitle": "AI subscriptions to assist with coding/research for a scalable oversight project.",
           "amountUsd": 1700,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Fausto Carcassi",
+          "projectTitle": "One-month long visit at the CEEALAR EA 'Hotel' in London",
+          "amountUsd": 840,
+          "link": "https://faustocarcassi.com/",
           "monthLabel": "Nov 2026"
         },
         {
@@ -95,12 +116,6 @@
           "monthLabel": "Nov 2026"
         },
         {
-          "granteeName": "Joe Murray",
-          "projectTitle": "Just over two months of salary to secure pilot funding and plan for Simulator's Tokyo hub – the first in a network of AI safety hubs – and scope other cities.",
-          "amountUsd": 20000,
-          "monthLabel": "Nov 2026"
-        },
-        {
           "granteeName": "Zach Yahn",
           "projectTitle": "Compute budget for research into decomposition attacks",
           "amountUsd": 2000,
@@ -132,6 +147,13 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Boris Lo",
+          "projectTitle": "API credits and a little GPU time to finish and judge an experiment testing whether weight edits to a language model truly remove backdoors and emergent misalignment, or only hide them.",
+          "amountUsd": 500,
+          "link": "https://github.com/Borislo83/weight-space-programming-em",
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Nathan Langley",
           "projectTitle": "To conduct my Bluedot Technical AI Safety project preliminary results on determining if coder models reduce or increase confidence in their answers after being corrected.",
           "amountUsd": 50,
@@ -141,6 +163,12 @@
         {
           "granteeName": "Catherine Ge-Wang",
           "projectTitle": "Support, travel and living costs for my transition period starting an automated auditing org with existing CG funding",
+          "amountUsd": 20000,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Kevin Wei",
+          "projectTitle": "A research project measuring how well AIs predict the purpose of evaluations tasks, as well as whether it's possible to effectively conceal such purposes to prevent meta-gaming",
           "amountUsd": 20000,
           "monthLabel": "Nov 2026"
         },
@@ -166,6 +194,12 @@
           "monthLabel": "Nov 2026"
         },
         {
+          "granteeName": "Angelica Casuela",
+          "projectTitle": "Strategy retreat for the Philippine AI safety community",
+          "amountUsd": 1650,
+          "monthLabel": "Nov 2026"
+        },
+        {
           "granteeName": "Jaray Foo",
           "projectTitle": "Compute and API credits to test how models fine-tuned away from identifying as an AI behave, what sort of persona they adopt and whether this causes shifts in behaviors and preferences.",
           "amountUsd": 3000,
@@ -176,6 +210,13 @@
           "projectTitle": "Persona Geology: bringing the blog post to paper-level science",
           "amountUsd": 5000,
           "link": "https://huggingface.co/bubskee/persona-geology-adapters",
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Kyle Yu",
+          "projectTitle": "Building AI safety club at Oxford college of Emory University",
+          "amountUsd": 2000,
+          "link": "https://kylethenbness.github.io/emory-ai-safety/#fellowship",
           "monthLabel": "Nov 2026"
         },
         {
@@ -209,6 +250,12 @@
           "granteeName": "Andrew Jin",
           "projectTitle": "Honesty audit and predictions for model fine-tuning.",
           "amountUsd": 150,
+          "monthLabel": "Nov 2026"
+        },
+        {
+          "granteeName": "Leo Hyams",
+          "projectTitle": "The Cape Institute for Safe AI is hosting the African AGI Macrostrategy Summit to convene AI policy researchers from select networks (Africa, middle- and great-powers) to develop SA's macrostrategy.",
+          "amountUsd": 5500,
           "monthLabel": "Nov 2026"
         },
         {
@@ -358,15 +405,15 @@
           "monthLabel": "Nov 2026"
         },
         {
-          "granteeName": "Jacob Woessner",
-          "projectTitle": "Funds for supporting an AI Advocacy group at the University of Vermont.",
-          "amountUsd": 1300,
+          "granteeName": "Fokel Ellen",
+          "projectTitle": "Co-found an AI-safety organisation for monitorability in Amsterdam with Tim Bakker.",
+          "amountUsd": 18600,
           "monthLabel": "Nov 2026"
         },
         {
-          "granteeName": "Adrien Amouroux",
-          "projectTitle": "Travel to the Bay Area to meet and connect with AI safety people",
-          "amountUsd": 900,
+          "granteeName": "Jacob Woessner",
+          "projectTitle": "Funds for supporting an AI Advocacy group at the University of Vermont.",
+          "amountUsd": 1300,
           "monthLabel": "Nov 2026"
         },
         {
@@ -1379,6 +1426,12 @@
           "projectTitle": "Pivoting my 15,500 subscriber YouTube channel to AI x-risk explainers making it concrete for a mainstream audience by recreating scenarios (e.g AI2027 and HuggingFace) in Minecraft",
           "amountUsd": 3700,
           "link": "https://www.youtube.com/@fluxxrider",
+          "monthLabel": "Oct 2026"
+        },
+        {
+          "granteeName": "Giovanni Maria Occhipinti",
+          "projectTitle": "Scaffold to automate the discovery of control and monitoring vulnerabilities in agentic harnesses and internal deployments. Also, a benchmark to measure how good models are at this task.",
+          "amountUsd": 10600,
           "monthLabel": "Oct 2026"
         },
         {
@@ -6581,13 +6634,20 @@
         }
       ],
       "stats": {
-        "count": 1359,
-        "totalAmountUsd": 4329755.34,
-        "averageDaysToDecision": 5.025943307677832
+        "count": 1373,
+        "totalAmountUsd": 4399945.34,
+        "averageDaysToDecision": 5.040325294447526
       }
     },
     "career-transition": {
       "grantees": [
+        {
+          "granteeName": "Supriya Srinivasan",
+          "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recCQAizcvFHpfA8X/1",
+          "bio": "Co-founder and managing partner of a €93M impact venture fund. Former banker.",
+          "grantPlan": "Exploring how to close gaps in the early-stage AI safety founding ecosystem.",
+          "profileUrl": "https://www.linkedin.com/in/supriya-s/"
+        },
         {
           "granteeName": "Logan Kane",
           "imageUrl": "https://web.miniextensions.com/api/public-attachments/jZlS5j5td2fkKt60ynaJ/recG0YIZES8yHBKP7/1",
@@ -6884,9 +6944,9 @@
         }
       ],
       "stats": {
-        "count": 84,
-        "totalAmountUsd": 5292665,
-        "averageDaysToDecision": 13
+        "count": 85,
+        "totalAmountUsd": 5342665,
+        "averageDaysToDecision": 12
       }
     }
   }
